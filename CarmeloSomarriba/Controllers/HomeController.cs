@@ -66,6 +66,10 @@ namespace CarmeloSomarriba.Controllers
             return View();
         }
 
+        public IActionResult Formulario()
+        {
+            return View();
+        }
 
         public IActionResult prueba()
         {
