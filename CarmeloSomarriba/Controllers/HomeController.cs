@@ -27,36 +27,69 @@ namespace CarmeloSomarriba.Controllers
             List<Pacientes> pacientes = new List<Pacientes>();
             pacientes.Add(new Pacientes()
             {
-                Nombre = "Otro nombre",
-                Direccion = "Managua los robles",
-                Edad = 24,
+                Nombre = "Martha",
+                Direccion = "TipiTapa",
+                Edad = 21,
                 Telefono = "84489888"
             });
 
             pacientes.Add(new Pacientes()
             {
                 Nombre = "Carlos",
-                Direccion = "Caracas",
-                Edad = 24,
+                Direccion = "Managua Linda vista",
+                Edad = 40,
                 Telefono = "84489888"
             });
 
             pacientes.Add(new Pacientes()
             {
-                Nombre = "Otro nombre",
-                Direccion = "Managua los robles",
-                Edad = 24,
+                Nombre = "Manuel",
+                Direccion = "Ciudad Sandino",
+                Edad = 44,
                 Telefono = "84489888"
             });
 
+            pacientes.Add(new Pacientes()
+            {
+                Nombre = "Enoc",
+                Direccion = "Caracas",
+                Edad = 39,
+                Telefono = "84489888"
+            });
+
+
+
+
+
+
+
+
+
+            List<Productos> Productos = new List<Productos>();
+           
             pacientes.Add(new Pacientes()
             {
                 Nombre = "Carlos",
-                Direccion = "Caracas",
-                Edad = 24,
+                Direccion = "Managua Linda vista",
+                Edad = 40,
                 Telefono = "84489888"
             });
 
+            pacientes.Add(new Pacientes()
+            {
+                Nombre = "Manuel",
+                Direccion = "Ciudad Sandino",
+                Edad = 44,
+                Telefono = "84489888"
+            });
+
+            pacientes.Add(new Pacientes()
+            {
+                Nombre = "Enoc",
+                Direccion = "Caracas",
+                Edad = 39,
+                Telefono = "84489888"
+            });
 
             return View(pacientes);
         }
@@ -65,6 +98,7 @@ namespace CarmeloSomarriba.Controllers
         {
             return View();
         }
+
 
         public IActionResult Formulario()
         {
@@ -75,7 +109,11 @@ namespace CarmeloSomarriba.Controllers
         {
             return View();
         }
-        
+
+        public IActionResult Productos()
+        {
+            return View();
+        }
 
 
     }
