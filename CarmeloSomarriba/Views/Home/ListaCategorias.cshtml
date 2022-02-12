@@ -1,0 +1,21 @@
+﻿@model List<CarmeloSomarriba.Models.Categoria>
+<div>
+    <table class="d-lg-table table-hover">
+        <thead>
+            <tr>
+                <th>Nombre Categoria</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{
+                foreach(var categoria in Model)
+                {
+                    <tr>
+                        <td>@categoria.NombreCategoria</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

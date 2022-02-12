@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CarmeloSomarriba.Models;
+using Microsoft.EntityFrameworkCore;
+using WEB_Core_Conv2.Models;
 
 namespace CarmeloSomarriba.Data
 {
@@ -8,10 +10,11 @@ namespace CarmeloSomarriba.Data
         {
         }
 
+        public DbSet<Pacientes> Pacientes { get; set; }
+        public DbSet<Productos> Productos { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
 
 
-        
-        
-}
+    }
 }
 
