@@ -1,16 +1,23 @@
-﻿<h1>Crer nueva categoria</h1>
-
-
-
-
+﻿<h1>Nombre de categoria.</h1>
 <form action="CrearCategoria" method="post">
-
     <div class="form-group">
-        <input type="text" class="form-control" name="NombreCategoria"/>
+        <input type="text" class="form-control nombre-categoria" name="NombreCategoria"/>
+    </div>
+    <h3>Descripcion.</h3>
+    <div class="form-group">
+        <textarea class="form-control otra-clase" name="Otro"/> </textarea>
     </div>
 
     <div class="form-group">
-        <input type="submit" value="Guardar" class="btn btn-success"/>
+        <a id="btnGuardar" href="javascrip:void(0);" class="btn btn-success">Guardar</a>
+        <a class="btn btn-outline-success" href="~/home/Index">Inicio</a>
+        <a class="btn btn-outline-success" href="~/home/ListaCategorias">Categorias.</a>
     </div>
-
 </form>
+<div class="contenedor"></div>
+
+@section Scripts {
+    <script src="~/js/Categoria.js" asp-append-version="true"></script>
+
+
+}

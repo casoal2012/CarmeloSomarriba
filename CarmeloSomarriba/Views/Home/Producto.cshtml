@@ -1,0 +1,52 @@
+﻿<h1>VentanaProducto.</h1>
+<form action="CrearProducto" method="post">
+    <div class="form-group">
+        <input type="text" class="form-control nombre-producto" placeholder="Crear nuevo producto" maxlength="30" name="NombreProducto"/>
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control otraclase-producto" placeholder="Descripcion de nuevo producto" maxlength="60" name="DescripcionProducto"/>
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control Precio-producto" placeholder="Precio del producto" name="Precio"/>
+    </div>
+
+    <h3>Fecha de Ingreso.</h3>
+    <div class="form-group">
+        <input type="date" class="form-control FechaIngreso-producto" placeholder="Fecha de ingreso del producto" name="FechaIngreso"/>
+    </div>
+
+    <h3>Imagen.</h3>
+    <div class="form-group">
+        <input type="file" class="form-control ImagenProducto-producto" placeholder="Imagen del producto" name="ImagenProducto"/>
+    </div>
+
+    <h3>Categoria Producto.</h3>
+    <div class="form-group">
+        <input type="text" class="form-control Categoria-producto" name="categoria"/>
+    </div>
+
+
+
+    <input type="submit" value="Guardar" class="btn btn-success">
+
+    <div class="form-group">
+        <a id="btnGuardarProducto" href="javascrip:void(0);" class="btn btn-success">Guardar</a>
+        <a class="btn btn-outline-success" href="~/home/Index">Inicio</a>
+        <a class="btn btn-outline-success" href="~/home/ListaProductos">Productos.</a>
+    </div>
+</form>
+
+
+
+
+<div class="contenedorProducto"></div>
+
+
+
+@section Scripts {
+    <script src="~/js/Producto.js" asp-append-version="true"></script>
+
+
+}

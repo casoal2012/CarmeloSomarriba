@@ -1,46 +1,54 @@
-﻿@model List<CarmeloSomarriba.Models.Categoria>
+﻿@model List<CarmeloSomarriba.Models.Producto>
 
-
+    <div>
+        
+        <a class="btn btn-danger" href="~/home/Index">Lista Productoss</a>
+        <a class="btn btn-danger" href="~/home/Producto">Ingresar Producto.</a>
     
+    </div>
+    <div class="row"></div>
 
 <div>
-    <table class="table table-hover tabla-categorias">
+    <table class="table table-hover tabla-productos">
         <thead>
             <tr>
-                <th>Nombre Categoria</th>
+                <th>Nombre Producto</th>
                
-                <th>Fecha creacion</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Fecha Ingreso</th>
+                <th>Imagen</th>
+                <th>Categoria</th>
                  <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             @{
-                foreach(var categoria in Model)
+                foreach(var producto in Model)
                 {
                     <tr>
-                        <td>@categoria.NombreCategoria</td>
-                        <td>@categoria.FechaCreacion</td>
+                        <td>@producto.NombreProducto</td>
+                        <td>@producto.DescripcionProducto</td>
+                        <td>@producto.Precio</td>
+                        <td>@producto.FechaIngreso</td>
+                        <td>@producto.ImagenProducto</td>
+                        <td>@producto.categoria</td>
                         <td>
-                            <a data-id="@categoria.Id" class= "btn btn-success ver-descripcion" href="javascript:void(0);">🔍</a>
-                            <a class= "btn btn-info" href="~/home/EditarCategoria?id=@categoria.Id">🖋</a>
-                            <a class= "btn btn-danger" href="~/home/EliminarCategoria?id=@categoria.Id">🗑</a>
+                            <a data-id="@producto.Id" class= "btn btn-success verdescripcionProducto" href="javascript:void(0);">Ver Descripcion</a>
+                            <a class= "btn btn-info" href="~/home/EditarProducto?id=@producto.Id">Editar</a>
+                            <a class= "btn btn-danger" href="~/home/EliminarProducto?id=@producto.Id">Eliminar</a>
                         </td>
                    </tr>
                 }
             }
         </tbody>
     </table>
-
 </div>
-
-
-<div>
     <div>
     <a class="btn btn-outline-success" href="@Url.Action("Index")">Inicio</a>
-      <a class="btn btn-danger" href="~/home/Index">Lista Productoss</a>
-        <a class="btn btn-danger" href="~/home/Categoria">Ingresar categoria.</a>
     </div>
-</div>
+
+
 
 
     <!-- Modal -->
@@ -48,14 +56,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Productos.</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
 
 
-        <span class="valor-descripcion"></span>
+        <span class="valor-descripcion-productos"></span>
 
 
 
@@ -69,18 +77,18 @@
 </div>
 
 
-"NombreProducto"
+
 
 
   
     @section Scripts{
         <script>
         
-             $('.tabla-categorias').DataTable();
+             $('.tabla-productos').DataTable();
 
 
 
-            $(".ver-descripcion").click(function(){
+            $(".verdescripcionProducto").click(function(){
                 var id = $(this).attr("data-id");
 
 
@@ -95,7 +103,7 @@
 
             xhr.done(function(data){
 
-            $(".valor-descripcion").text(data.descripcion);
+            $(".valor-descripcion-productos").text(data.descripcion);
                 $("#exampleModal").modal("show");
             
             });
