@@ -1,108 +1,21 @@
 ﻿@model List<CarmeloSomarriba.Models.Categoria>
-
-
-    
-
 <div>
-    <table class="table table-hover tabla-categorias">
+    <table class="d-lg-table table-hover">
         <thead>
             <tr>
                 <th>Nombre Categoria</th>
-               
-                <th>Fecha creacion</th>
-                 <th>Acciones</th>
             </tr>
         </thead>
+
         <tbody>
             @{
                 foreach(var categoria in Model)
                 {
                     <tr>
                         <td>@categoria.NombreCategoria</td>
-                        <td>@categoria.FechaCreacion</td>
-                        <td>
-                            <a data-id="@categoria.Id" class= "btn btn-success ver-descripcion" href="javascript:void(0);">🔍</a>
-                            <a class= "btn btn-info" href="~/home/EditarCategoria?id=@categoria.Id">🖋</a>
-                            <a class= "btn btn-danger" href="~/home/EliminarCategoria?id=@categoria.Id">🗑</a>
-                        </td>
-                   </tr>
+                    </tr>
                 }
             }
         </tbody>
     </table>
-
 </div>
-
-
-<div>
-    <div>
-    <a class="btn btn-outline-success" href="@Url.Action("Index")">Inicio</a>
-      <a class="btn btn-danger" href="~/home/Index">Lista Productoss</a>
-        <a class="btn btn-danger" href="~/home/Categoria">Ingresar categoria.</a>
-    </div>
-</div>
-
-
-    <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-
-
-
-        <span class="valor-descripcion"></span>
-
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-"NombreProducto"
-
-
-  
-    @section Scripts{
-        <script>
-        
-             $('.tabla-categorias').DataTable();
-
-
-
-            $(".ver-descripcion").click(function(){
-                var id = $(this).attr("data-id");
-
-
-                // hacer la peticion para rescatar la descripcion de la clase
-                var xhr = $.ajax({
-            url: "ObtenerDescripcion",
-            type: "POST",
-            data: {
-                "Id": id
-            }
-            });
-
-            xhr.done(function(data){
-
-            $(".valor-descripcion").text(data.descripcion);
-                $("#exampleModal").modal("show");
-            
-            });
-            xhr.fail(function(){ });
-
-            })
-
-        </script>
-    }
-

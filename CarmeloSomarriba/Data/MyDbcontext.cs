@@ -8,9 +8,10 @@ namespace CarmeloSomarriba.Data
     {
         public MyDbcontext(DbContextOptions<MyDbcontext> options) : base(options)
         {
-
         }
-        public DbSet<Producto> Productos { get; set; }
+
+        public DbSet<Pacientes> Pacientes { get; set; }
+        public DbSet<Productos> Productos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
 
 

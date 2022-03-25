@@ -28,161 +28,123 @@ namespace CarmeloSomarriba.Controllers
         }
 
         public IActionResult Index()
-        {return View();}
-        //.......................................................       
-        //crear nuevo producto...................................
-        //.......................................................
-        public IActionResult Producto() { return View(); }
-
-        public IActionResult CrearProducto(Producto producto)
-        {
-            // aqui no pude hacer que la Descripcion como Categoria no fuera null. creo que poreso no me dio. igual me gustaria que me dijera porque fue que no me cargo
-            _context.Productos.Add(producto);
-            _context.SaveChanges();
-            return RedirectToAction("ListaProductos");
-        }
-
-        public IActionResult ListaProductos()
-        {
-            List<Producto> productos = _context.Productos.ToList();
-            return View(productos);
-        }
-
-
-        public IActionResult EditarProducto(int id)
-        {
-            Producto modelo = _context.Productos.Where(c => c.Id == id).FirstOrDefault();
-            return View(modelo);
-        }
-
-        public IActionResult EditarValorProducto(Producto producto)
-        {
-            //REcupero valor en la base de datos
-            Producto productoActual = _context.Productos
-                 .Where(uni => uni.Id == producto.Id).FirstOrDefault();
-
-            //actualizo el nombre de la categoria con el nuevo valor
-            productoActual.NombreProducto = producto.NombreProducto;
-
-            //persisto los datos en la base de datos.
-            _context.SaveChanges();
-
-            List<Producto> productos = _context.Productos.ToList();
-            return View("ListaProductos", productos);
-        }
-
-        public IActionResult EliminarProducto(int id)
         {
 
-            Producto producto = _context.Productos.Where(a => a.Id == id).FirstOrDefault();
+            //
 
-            _context.Remove(producto);
-            _context.SaveChanges();
-
-            List<Producto> productos = _context.Productos.ToList();
-            return View("ListaProductos", productos);
-        }
-
-        public IActionResult verdescripcionProducto(int id)
-        {
-
-            // string descripcion  = _context.Categorias.Where(a => a.Id == id).FirstOrDefault().Descripcion;
-
-            string descripcion = "El producto no contiene descripcion";
-            Producto producto = _context.Productos.Where(a => a.Id == id).FirstOrDefault();
-
-            if (producto != null && !string.IsNullOrEmpty(producto.DescripcionProducto))
+            List<Pacientes> pacientes = new List<Pacientes>();
+            pacientes.Add(new Pacientes()
             {
-                descripcion = producto.DescripcionProducto;
-            }
+                Nombre = "Martha",
+                Direccion = "TipiTapa",
+                Edad = 21,
+                Telefono = "84489888"
+            });
 
-            return Json(new { descripcion });
+            pacientes.Add(new Pacientes()
+            {
+                Nombre = "Carlos",
+                Direccion = "Managua Linda vista",
+                Edad = 40,
+                Telefono = "84489888"
+            });
+
+            pacientes.Add(new Pacientes()
+            {
+                Nombre = "Manuel",
+                Direccion = "Ciudad Sandino",
+                Edad = 44,
+                Telefono = "84489888"
+            });
+
+            pacientes.Add(new Pacientes()
+            {
+                Nombre = "Enoc",
+                Direccion = "Caracas",
+                Edad = 39,
+                Telefono = "84489888"
+            });
+
+            List<Productos> Productos = new List<Productos>();
+           
+            pacientes.Add(new Pacientes()
+            {
+                Nombre = "Carlos",
+                Direccion = "Managua Linda vista",
+                Edad = 40,
+                Telefono = "84489888"
+            });
+
+            pacientes.Add(new Pacientes()
+            {
+                Nombre = "Manuel",
+                Direccion = "Ciudad Sandino",
+                Edad = 44,
+                Telefono = "84489888"
+            });
+
+            pacientes.Add(new Pacientes()
+            {
+                Nombre = "Enoc",
+                Direccion = "Caracas",
+                Edad = 39,
+                Telefono = "84489888"
+            });
+
+            return View(pacientes);
         }
 
+        public IActionResult Privacy()
+        {
+            return View();
+        }
 
-
-
-
-
-
-        //.......................................................
-        //crear nueva categoria..................................
-        //.......................................................
-
-
-        public IActionResult Categoria() { return View(); }
+        public IActionResult Categoria()
+        {
+            return View();
+        }
 
         public IActionResult CrearCategoria(Categoria categoria)
         {
+
             categoria.FechaCreacion = DateTime.Now;
+
             _context.Categorias.Add(categoria);
+
             _context.SaveChanges();
-            return RedirectToAction("ListaCategorias");
+
+            return RedirectToAction("Categoria");
         }
+
 
         public IActionResult ListaCategorias()
         {
             List<Categoria> categorias = _context.Categorias.ToList();
+           
+
             return View(categorias);
         }
 
 
-        public IActionResult EditarCategoria(int id)
+
+
+        public IActionResult Formulario()
         {
-            Categoria modelo = _context.Categorias.Where(c => c.Id == id).FirstOrDefault();
-            return View(modelo);
+            return View();
         }
 
-        public IActionResult EditarValorCategoria(Categoria categoria)
+       
+
+        public IActionResult prueba()
         {
-            //REcupero valor en la base de datos
-            Categoria categoriaActual = _context.Categorias
-                 .Where(uni => uni.Id == categoria.Id).FirstOrDefault();
-
-            //actualizo el nombre de la categoria con el nuevo valor
-            categoriaActual.NombreCategoria = categoria.NombreCategoria;
-
-            //persisto los datos en la base de datos.
-            _context.SaveChanges();
-
-            List<Categoria> categorias = _context.Categorias.ToList();
-            return View("ListaCategorias", categorias);
+            return View();
         }
 
-        public IActionResult EliminarCategoria(int id)
+        public IActionResult Productos()
         {
-            List<Producto> productos = _context.Productos.Where(a => a.CategoriaId == id).ToList();
-
-            Categoria categoria = _context.Categorias.Where(a => a.Id == id).FirstOrDefault();
-
-            _context.Remove(categoria);
-            _context.SaveChanges();
-
-            List<Categoria> categorias = _context.Categorias.ToList();
-            return View("ListaCategorias", categorias);
-        }
-
-        public IActionResult ObtenerDescripcion(int id)
-        {
-
-            // string descripcion  = _context.Categorias.Where(a => a.Id == id).FirstOrDefault().Descripcion;
-
-            string descripcion = "la categoria no contiene descripcion";
-            Categoria categoria = _context.Categorias.Where(a => a.Id == id).FirstOrDefault();
-
-            if (categoria != null && !string.IsNullOrEmpty(categoria.Descripcion))
-            {
-                descripcion = categoria.Descripcion;
-            }
-
-            return Json(new { descripcion });
+            return View();
         }
 
 
-
-
-        //.......................................................
-        //crear nuevo Modulo.....................................
-        //.......................................................
     }
 }
